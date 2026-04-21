@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#f3f4f6"/>
+  <rect x="40" y="80" width="240" height="240" rx="12" fill="#e5e7eb"/>
+  <rect x="320" y="80" width="240" height="240" rx="12" fill="#ddd6fe"/>
+  <text x="160" y="220" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#6b7280" text-anchor="middle">Before</text>
+  <text x="440" y="220" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#8b5cf6" text-anchor="middle">After</text>
+  <text x="300" y="360" font-family="system-ui, sans-serif" font-size="14" fill="#9ca3af" text-anchor="middle">Increased hair density and thickness over time</text>
+  <path d="M290 200 L310 200 M300 190 L300 210" stroke="#9ca3af" stroke-width="2"/>
+</svg>
