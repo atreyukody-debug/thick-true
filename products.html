@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Products | Thick &amp; True</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Thick &amp; True</a>
+      <div class="nav-links">
+        <a href="products.html">Shop</a>
+        <a href="guides.html">Guides</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-badges">
+        <span class="pill">NZ OTC only</span>
+        <span class="pill">Stripe · iShop · Afterpay</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="section">
+      <header class="section-header">
+        <h1>All Products</h1>
+        <p>Shop our range of hair loss treatments and supporting products.</p>
+      </header>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="hair-loss">Hair Loss</button>
+        <button class="filter-btn" data-filter="thickening">Thickening</button>
+        <button class="filter-btn" data-filter="starter-kits">Starter Kits</button>
+      </div>
+
+      <div class="grid" id="products-grid">
+        <!-- Products will be populated by JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Thick &amp; True. All rights reserved.</span>
+    <span>
+      <a href="legal/terms.html">Terms</a> · 
+      <a href="legal/privacy.html">Privacy</a> · 
+      <a href="legal/medicine-info.html">Medicine information</a>
+    </span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "5% Minoxidil Topical Solution",
+        desc: "Once‑ or twice‑daily topical solution for hereditary hair loss in men.",
+        price: 39.99,
+        dose: "5% w/v · 60 mL",
+        tag: "Core treatment",
+        category: "hair-loss",
+        image: "assets/img/minoxidil-solution.jpg"
+      },
+      {
+        id: 2,
+        name: "5% Minoxidil Foam",
+        desc: "Non‑greasy foam format designed for easy application to the scalp.",
+        price: 44.99,
+        dose: "5% w/w · 60 g",
+        tag: "Low mess",
+        category: "hair-loss",
+        image: "assets/img/minoxidil-foam.jpg"
+      },
+      {
+        id: 3,
+        name: "Caffeine & Biotin Shampoo",
+        desc: "Gentle daily shampoo formulated to support scalp health and hair strength.",
+        price: 24.50,
+        dose: "250 mL",
+        tag: "Support",
+        category: "hair-loss",
+        image: "assets/img/caffeine-shampoo.jpg"
+      },
+      {
+        id: 4,
+        name: "Keratin Hair Fibres",
+        desc: "Instantly disguises thinning areas for a fuller‑looking style.",
+        price: 34.00,
+        dose: "28 g",
+        tag: "Instant boost",
+        category: "thickening",
+        image: "assets/img/keratin-fibres.jpg"
+      },
+      {
+        id: 5,
+        name: "Nioxin + 5% Minoxidil Foam Starter Kit",
+        desc: "Complete kit with shampoo, conditioner, and minoxidil foam for beginners.",
+        price: 119.00,
+        dose: "Full kit",
+        tag: "Starter kit",
+        category: "starter-kits",
+        image: "assets/img/kit-nioxin-minoxidil.jpg"
+      },
+      {
+        id: 6,
+        name: "Rosemary Scalp Oil",
+        desc: "Natural oil blend to stimulate scalp circulation and support healthy hair growth.",
+        price: 29.99,
+        dose: "50 mL",
+        tag: "Natural support",
+        category: "hair-loss",
+        image: "assets/img/rosemary-oil.jpg"
+      },
+      {
+        id: 7,
+        name: "Specialist Scalp Shampoo",
+        desc: "Medicated shampoo for scalp health, helps control dandruff and irritation.",
+        price: 19.99,
+        dose: "200 mL",
+        tag: "Scalp care",
+        category: "hair-loss",
+        image: "assets/img/specialist-shampoo.jpg"
+      }
+    ];
+
+    let currentFilter = 'all';
+
+    function formatPrice(value) {
+      return "$" + value.toFixed(2);
+    }
+
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById("products-grid");
+      grid.innerHTML = "";
+      const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+      
+      filteredProducts.forEach(p => {
+        let page = '';
+        if (p.id === 5) page = 'nioxin-starter-kit';
+        else if (p.id === 6) page = 'rosemary-oil';
+        else if (p.id === 7) page = 'specialist-shampoo';
+        else page = 'minoxidil-foam'; // fallback
+        
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" />
+          <div class="product-tag">${p.tag}</div>
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <div class="product-meta">
+            <span class="product-price">${formatPrice(p.price)}</span>
+            <span class="dose">${p.dose}</span>
+          </div>
+          <div class="product-actions">
+            <a href="product-${page}.html" class="btn-ghost">Learn more</a>
+          </div>
+          <p class="note">Always read the label and follow directions for use.</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setupFilters() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.dataset.filter;
+          renderProducts(currentFilter);
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      setupFilters();
+    });
+  </script>
+</body>
+</html>
