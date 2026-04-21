@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>About Us | Thick &amp; True</title>
+  <meta name="description" content="Thick & True is a New Zealand brand making effective hair loss treatments accessible for everyday Kiwi men. Science-backed, plain language, local compliance." />
+  <meta property="og:title" content="About Us | Thick &amp; True" />
+  <meta property="og:description" content="Science-backed hair loss treatments for New Zealand men." />
+  <meta property="og:type" content="website" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
@@ -14,6 +19,11 @@
         <a href="products.html">Shop</a>
         <a href="guides.html">Guides</a>
         <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-badges">
+        <span class="pill">NZ OTC only</span>
+        <span class="pill">Stripe · iShop · Afterpay</span>
       </div>
     </nav>
   </header>
@@ -87,6 +97,10 @@
     </span>
   </footer>
 
+  <div class="cookie-banner" id="cookie-banner">
+    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="legal/terms.html">Terms</a> and <a href="legal/privacy.html">Privacy Policy</a>.</p>
+    <button onclick="document.getElementById('cookie-banner').classList.add('hidden'); localStorage.setItem('cookiesAccepted','true')">Accept</button>
+  </div>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
