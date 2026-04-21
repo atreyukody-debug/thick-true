@@ -1205,6 +1205,360 @@
       }
     }
 
+    /* Trust bar */
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-top: -2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .trust-item {
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .trust-item span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Hero badges */
+    .hero-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badges .pill {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    /* Step cards */
+    .step-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Plan cards */
+    .plan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .plan-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+    }
+
+    .plan-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .plan-tag.popular {
+      color: var(--accent);
+      background: rgba(139, 92, 246, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    .plan-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      flex-grow: 1;
+    }
+
+    .plan-features li {
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    .plan-price {
+      margin-bottom: 1rem;
+    }
+
+    .plan-price .price {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    .plan-price .bnpl {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .plan-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* Timeline */
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 80px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-month {
+      width: 80px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .timeline-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      flex: 1;
+    }
+
+    .timeline-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .timeline-note {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      padding: 1rem 1.25rem;
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+    }
+
+    /* Why us cards */
+    .why-card {
+      padding: 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .why-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Comparison table */
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.875rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--bg-alt);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+    }
+
+    .comparison-table th.highlight,
+    .comparison-table td.highlight {
+      background: rgba(139, 92, 246, 0.05);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .comparison-table tr:hover td {
+      background: var(--bg-alt);
+    }
+
+    .comparison-table tr:hover td.highlight {
+      background: rgba(139, 92, 246, 0.08);
+    }
+
+    /* FAQ list */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-more {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .faq-more a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* CTA section */
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(167, 139, 250, 0.05));
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: var(--radius);
+    }
+
+    .cta-box h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .trust-bar {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: -1rem;
+      }
+
+      .timeline::before {
+        left: 60px;
+      }
+
+      .timeline-month {
+        width: 60px;
+      }
+    }
+
     @media (max-width: 640px) {
       .nav {
         flex-direction: column;
@@ -1223,6 +1577,31 @@
 
       .hero-copy h1 {
         font-size: 2.45rem;
+      }
+
+      .trust-bar {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+
+      .timeline::before {
+        left: 0;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .timeline-month {
+        width: auto;
+        text-align: left;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.625rem 0.75rem;
+        font-size: 0.8rem;
       }
 
       .cookie-banner {

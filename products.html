@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>All Products | Thick &amp; True</title>
-  <meta name="description" content="Shop men’s hair loss treatments online in New Zealand. Minoxidil foam, Nioxin starter kits, thickening shampoos and scalp care. Discreet delivery." />
+  <meta name="description" content="Shop men's hair loss treatments online in New Zealand. Minoxidil foam, Nioxin starter kits, thickening shampoos and scalp care. Discreet delivery." />
   <meta property="og:title" content="All Products | Thick &amp; True" />
   <meta property="og:description" content="Hair loss treatments for New Zealand men. Minoxidil, Nioxin, scalp care." />
   <meta property="og:type" content="website" />
@@ -29,21 +29,97 @@
   </header>
 
   <main class="layout">
+    <!-- TREATMENT PLANS -->
     <section class="section">
       <header class="section-header">
-        <h1>All Products</h1>
-        <p>Shop our range of hair loss treatments and supporting products.</p>
+        <h1>Treatment Plans</h1>
+        <p>Everything you need to start — no guesswork. Choose based on your stage and goals.</p>
+      </header>
+
+      <div class="grid three-col plans">
+        <article class="plan-card">
+          <div class="plan-tag">Early Stage</div>
+          <h3>Defence Kit</h3>
+          <p class="plan-desc">For men noticing first signs of thinning. Stop loss before it progresses.</p>
+          <ul class="plan-features">
+            <li>5% Minoxidil Foam (60g)</li>
+            <li>Specialist Scalp Shampoo (200mL)</li>
+            <li>Quick-start routine card</li>
+          </ul>
+          <div class="plan-price">
+            <span class="price">$64.99</span>
+            <span class="bnpl">$16.25 with Afterpay</span>
+          </div>
+          <a href="#" class="btn-primary" onclick="alert('Checkout coming soon — email us at hello@thickandtrue.co.nz to order')">Add to cart</a>
+          <p class="plan-note">Results in 3-6 months · 2-month minoxidil supply</p>
+        </article>
+
+        <article class="plan-card featured">
+          <div class="plan-tag popular">Most Popular</div>
+          <h3>Complete Kit</h3>
+          <p class="plan-desc">Our best-selling dual-action kit. Cleanse, protect, and regrow.</p>
+          <ul class="plan-features">
+            <li>5% Minoxidil Foam (60g)</li>
+            <li>Nioxin Shampoo + Conditioner</li>
+            <li>Rosemary Scalp Oil (50mL)</li>
+            <li>Progress tracker card</li>
+          </ul>
+          <div class="plan-price">
+            <span class="price">$119.00</span>
+            <span class="bnpl">$29.75 with Afterpay</span>
+          </div>
+          <a href="product-nioxin-starter-kit.html" class="btn-primary">View kit details</a>
+          <p class="plan-note">Results in 3-6 months · 2-month minoxidil supply</p>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-tag">Advanced</div>
+          <h3>Intensive Kit</h3>
+          <p class="plan-desc">For noticeable thinning or receding hairlines. Maximum coverage.</p>
+          <ul class="plan-features">
+            <li>5% Minoxidil Foam (2x 60g)</li>
+            <li>Nioxin System Kit (Shampoo + Conditioner + Treatment)</li>
+            <li>Keratin Hair Fibres (28g)</li>
+            <li>Rosemary Scalp Oil (50mL)</li>
+            <li>Monthly progress tracker</li>
+          </ul>
+          <div class="plan-price">
+            <span class="price">$179.00</span>
+            <span class="bnpl">$44.75 with Afterpay</span>
+          </div>
+          <a href="#" class="btn-primary" onclick="alert('Checkout coming soon — email us at hello@thickandtrue.co.nz to order')">Add to cart</a>
+          <p class="plan-note">Results in 3-6 months · 4-month minoxidil supply</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- INDIVIDUAL PRODUCTS -->
+    <section class="section" id="individual-products">
+      <header class="section-header">
+        <h2>Individual Products</h2>
+        <p>Build your own routine or restock single items.</p>
       </header>
 
       <div class="filters">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="hair-loss">Hair Loss</button>
+        <button class="filter-btn" data-filter="hair-loss">Hair Loss Treatments</button>
         <button class="filter-btn" data-filter="thickening">Thickening</button>
-        <button class="filter-btn" data-filter="starter-kits">Starter Kits</button>
+        <button class="filter-btn" data-filter="scalp-care">Scalp Care</button>
       </div>
 
       <div class="grid" id="products-grid">
-        <!-- Products will be populated by JS -->
+        <!-- Products populated by JS -->
+      </div>
+    </section>
+
+    <!-- QUIZ CTA -->
+    <section class="section cta-section">
+      <div class="cta-box">
+        <h2>Not sure which kit is right?</h2>
+        <p>Answer 5 quick questions and we'll recommend the best plan for your situation.</p>
+        <div class="cta-buttons">
+          <a href="quiz.html" class="btn-primary">Take the 30-sec quiz</a>
+        </div>
       </div>
     </section>
   </main>
@@ -57,78 +133,79 @@
     </span>
   </footer>
 
+  <div class="cookie-banner" id="cookie-banner">
+    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="legal/terms.html">Terms</a> and <a href="legal/privacy.html">Privacy Policy</a>.</p>
+    <button onclick="document.getElementById('cookie-banner').classList.add('hidden'); localStorage.setItem('cookiesAccepted','true')">Accept</button>
+  </div>
+
   <script src="assets/js/main.js"></script>
   <script>
     const products = [
       {
         id: 1,
-        name: "5% Minoxidil Topical Solution",
-        desc: "Once‑ or twice‑daily topical solution for hereditary hair loss in men.",
-        price: 39.99,
-        dose: "5% w/v · 60 mL",
+        name: "5% Minoxidil Foam",
+        desc: "Clinically proven to regrow hair in 80-92% of men. Non-greasy foam for easy scalp application.",
+        price: 44.99,
+        dose: "5% w/w · 60 g · ~2 month supply",
         tag: "Core treatment",
         category: "hair-loss",
-        image: "assets/img/minoxidil-solution.jpg"
+        image: "assets/img/minoxidil-foam.jpg",
+        page: "product-minoxidil-foam.html"
       },
       {
         id: 2,
-        name: "5% Minoxidil Foam",
-        desc: "Non‑greasy foam format designed for easy application to the scalp.",
-        price: 44.99,
-        dose: "5% w/w · 60 g",
-        tag: "Low mess",
-        category: "hair-loss",
-        image: "assets/img/minoxidil-foam.jpg"
+        name: "Nioxin Cleanser Shampoo",
+        desc: "Removes follicle-clogging sebum and environmental residues. Prepares scalp for treatment.",
+        price: 34.99,
+        dose: "300 mL · System 2 (Fine/Natural)",
+        tag: "Scalp prep",
+        category: "scalp-care",
+        image: "assets/img/kit-nioxin-minoxidil.jpg",
+        page: "product-nioxin-starter-kit.html"
       },
       {
         id: 3,
-        name: "Caffeine & Biotin Shampoo",
-        desc: "Gentle daily shampoo formulated to support scalp health and hair strength.",
-        price: 24.50,
-        dose: "250 mL",
-        tag: "Support",
-        category: "hair-loss",
-        image: "assets/img/caffeine-shampoo.jpg"
+        name: "Nioxin Scalp Therapy Conditioner",
+        desc: "Lightweight conditioner that moisturises without weighing hair down. Protects against breakage.",
+        price: 34.99,
+        dose: "300 mL · System 2 (Fine/Natural)",
+        tag: "Hair protection",
+        category: "scalp-care",
+        image: "assets/img/kit-nioxin-minoxidil.jpg",
+        page: "product-nioxin-starter-kit.html"
       },
       {
         id: 4,
         name: "Keratin Hair Fibres",
-        desc: "Instantly disguises thinning areas for a fuller‑looking style.",
+        desc: "Instantly disguises thinning areas for a fuller-looking style. Natural-looking, wind and rain resistant.",
         price: 34.00,
-        dose: "28 g",
+        dose: "28 g · Medium Brown / Dark Brown",
         tag: "Instant boost",
         category: "thickening",
-        image: "assets/img/keratin-fibres.jpg"
+        image: "assets/img/keratin-fibres.jpg",
+        page: "products.html"
       },
       {
         id: 5,
-        name: "Nioxin + 5% Minoxidil Foam Starter Kit",
-        desc: "Complete kit with shampoo, conditioner, and minoxidil foam for beginners.",
-        price: 119.00,
-        dose: "Full kit",
-        tag: "Starter kit",
-        category: "starter-kits",
-        image: "assets/img/kit-nioxin-minoxidil.jpg"
+        name: "Rosemary Scalp Oil",
+        desc: "Natural blend to stimulate scalp circulation. Studies show rosemary oil may be as effective as 2% minoxidil.",
+        price: 29.99,
+        dose: "50 mL · Dropper application",
+        tag: "Natural support",
+        category: "hair-loss",
+        image: "assets/img/rosemary-oil.jpg",
+        page: "product-rosemary-oil.html"
       },
       {
         id: 6,
-        name: "Rosemary Scalp Oil",
-        desc: "Natural oil blend to stimulate scalp circulation and support healthy hair growth.",
-        price: 29.99,
-        dose: "50 mL",
-        tag: "Natural support",
-        category: "hair-loss",
-        image: "assets/img/rosemary-oil.jpg"
-      },
-      {
-        id: 7,
         name: "Specialist Scalp Shampoo",
-        desc: "Medicated shampoo for scalp health, helps control dandruff and irritation.",
+        desc: "Medicated shampoo for scalp health. Helps control dandruff, irritation and excess oil.",
         price: 19.99,
-        dose: "200 mL",
+        dose: "200 mL · Ketoconazole 2%",
         tag: "Scalp care",
-        category: "hair-loss",
-        image: "assets/img/specialist-shampoo.jpg"
+        category: "scalp-care",
+        image: "assets/img/specialist-shampoo.jpg",
+        page: "product-specialist-shampoo.html"
       }
     ];
 
@@ -142,14 +219,8 @@
       const grid = document.getElementById("products-grid");
       grid.innerHTML = "";
       const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-      
+
       filteredProducts.forEach(p => {
-        let page = '';
-        if (p.id === 5) page = 'nioxin-starter-kit';
-        else if (p.id === 6) page = 'rosemary-oil';
-        else if (p.id === 7) page = 'specialist-shampoo';
-        else page = 'minoxidil-foam'; // fallback
-        
         const card = document.createElement("article");
         card.className = "product-card";
         card.innerHTML = `
@@ -162,7 +233,8 @@
             <span class="dose">${p.dose}</span>
           </div>
           <div class="product-actions">
-            <a href="product-${page}.html" class="btn-ghost">Learn more</a>
+            <a href="${p.page}" class="btn-ghost">Learn more</a>
+            <a href="#" class="btn-primary" onclick="alert('Checkout coming soon — email hello@thickandtrue.co.nz')">Add to cart</a>
           </div>
           <p class="note">Always read the label and follow directions for use.</p>
         `;
@@ -187,9 +259,5 @@
       setupFilters();
     });
   </script>
-  <div class="cookie-banner" id="cookie-banner">
-    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="legal/terms.html">Terms</a> and <a href="legal/privacy.html">Privacy Policy</a>.</p>
-    <button onclick="document.getElementById('cookie-banner').classList.add('hidden'); localStorage.setItem('cookiesAccepted','true')">Accept</button>
-  </div>
 </body>
 </html>

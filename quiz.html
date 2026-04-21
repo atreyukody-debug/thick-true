@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Your Kit | Thick & True</title>
+  <meta name="description" content="Take our 30-second quiz to find the right hair loss treatment kit for your stage and goals." />
+  <meta property="og:title" content="Find Your Kit | Thick & True" />
+  <meta property="og:description" content="30-second quiz to find your ideal hair recovery kit." />
+  <meta property="og:type" content="website" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .quiz-container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+    }
+
+    .quiz-progress {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .quiz-progress-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .quiz-step {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .quiz-step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quiz-question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      text-align: left;
+      width: 100%;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent);
+      background: rgba(139, 92, 246, 0.03);
+    }
+
+    .quiz-option .opt-label {
+      font-weight: 600;
+      display: block;
+    }
+
+    .quiz-option .opt-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .quiz-nav button {
+      padding: 0.625rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .quiz-nav button.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .quiz-nav button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .quiz-result {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .quiz-result.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .result-kit {
+      background: var(--card);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+
+    .result-kit h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-kit .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .result-reason {
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .result-alts {
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .result-alts h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .alt-kit {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.5rem;
+    }
+
+    .alt-kit strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .alt-kit span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Thick &amp; True</a>
+      <div class="nav-links">
+        <a href="products.html">Shop</a>
+        <a href="guides.html">Guides</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-badges">
+        <span class="pill">NZ OTC only</span>
+        <span class="pill">Stripe · iShop · Afterpay</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="section" style="padding-top: 3rem;">
+      <div class="quiz-container">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="progress-bar" style="width: 20%"></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="quiz-step active" data-step="1">
+          <p class="quiz-question">How would you describe your current hair loss?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answer(1, 'early')">
+              <div>
+                <span class="opt-label">Early signs</span>
+                <span class="opt-desc">Slight thinning at the crown or hairline, but not very noticeable yet</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(1, 'noticeable')">
+              <div>
+                <span class="opt-label">Noticeable thinning</span>
+                <span class="opt-desc">Clear thinning, wider part, or visible scalp in some areas</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(1, 'advanced')">
+              <div>
+                <span class="opt-label">Receding or significant loss</span>
+                <span class="opt-desc">Receding hairline, bald patches, or very thin coverage</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(1, 'maintain')">
+              <div>
+                <span class="opt-label">Just maintaining</span>
+                <span class="opt-desc">No major loss yet, but want to keep what I have</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step" data-step="2">
+          <p class="quiz-question">How long have you been experiencing hair loss?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answer(2, 'under6')">
+              <div>
+                <span class="opt-label">Less than 6 months</span>
+                <span class="opt-desc">Recently noticed — may be stress-related or early pattern loss</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(2, '6to24')">
+              <div>
+                <span class="opt-label">6 months to 2 years</span>
+                <span class="opt-desc">Progressive thinning over a moderate period</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(2, 'over2')">
+              <div>
+                <span class="opt-label">More than 2 years</span>
+                <span class="opt-desc">Long-term pattern, likely androgenetic alopecia</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step" data-step="3">
+          <p class="quiz-question">Have you tried any hair loss treatments before?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answer(3, 'none')">
+              <div>
+                <span class="opt-label">No, this is my first time</span>
+                <span class="opt-desc">Starting fresh — want a simple, proven routine</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(3, 'shampoo')">
+              <div>
+                <span class="opt-label">Tried thickening shampoos only</span>
+                <span class="opt-desc">Need something stronger than cosmetic products</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(3, 'minoxidil')">
+              <div>
+                <span class="opt-label">Used minoxidil before</span>
+                <span class="opt-desc">Looking to upgrade my routine or add supporting products</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="quiz-step" data-step="4">
+          <p class="quiz-question">What's your main goal?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answer(4, 'stop')">
+              <div>
+                <span class="opt-label">Stop further loss</span>
+                <span class="opt-desc">My priority is halting progression</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(4, 'regrow')">
+              <div>
+                <span class="opt-label">Regrow what I've lost</span>
+                <span class="opt-desc">I want to recover density and coverage</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(4, 'both')">
+              <div>
+                <span class="opt-label">Stop loss AND regrow</span>
+                <span class="opt-desc">Maximum effort — I'm all in</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="quiz-step" data-step="5">
+          <p class="quiz-question">What's your budget for getting started?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answer(5, 'budget')">
+              <div>
+                <span class="opt-label">Under $75</span>
+                <span class="opt-desc">Want to test the waters before committing more</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(5, 'mid')">
+              <div>
+                <span class="opt-label">$75–$150</span>
+                <span class="opt-desc">Happy to invest in a solid starter kit</span>
+              </div>
+            </button>
+            <button class="quiz-option" onclick="answer(5, 'premium')">
+              <div>
+                <span class="opt-label">$150+</span>
+                <span class="opt-desc">Want the most comprehensive setup possible</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="quiz-result" id="quiz-result">
+          <h2>Your recommended kit</h2>
+          <div id="result-content"></div>
+        </div>
+
+        <div class="quiz-nav" id="quiz-nav">
+          <button onclick="prevStep()" id="btn-back" disabled>Back</button>
+          <span style="color: var(--muted); font-size: 0.85rem; align-self: center;">
+            Step <span id="step-num">1</span> of 5
+          </span>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Thick &amp; True. All rights reserved.</span>
+    <span>
+      <a href="legal/terms.html">Terms</a> · 
+      <a href="legal/privacy.html">Privacy</a> · 
+      <a href="legal/medicine-info.html">Medicine information</a>
+    </span>
+  </footer>
+
+  <div class="cookie-banner" id="cookie-banner">
+    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="legal/terms.html">Terms</a> and <a href="legal/privacy.html">Privacy Policy</a>.</p>
+    <button onclick="document.getElementById('cookie-banner').classList.add('hidden'); localStorage.setItem('cookiesAccepted','true')">Accept</button>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    let currentStep = 1;
+    const answers = {};
+
+    function updateProgress() {
+      const pct = (currentStep / 5) * 100;
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('step-num').textContent = currentStep;
+      document.getElementById('btn-back').disabled = currentStep === 1;
+    }
+
+    function showStep(n) {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      const step = document.querySelector('.quiz-step[data-step="' + n + '"]');
+      if (step) step.classList.add('active');
+      updateProgress();
+    }
+
+    function answer(step, value) {
+      answers[step] = value;
+      if (step < 5) {
+        currentStep = step + 1;
+        showStep(currentStep);
+      } else {
+        showResult();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    function showResult() {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('quiz-nav').style.display = 'none';
+      document.getElementById('quiz-result').classList.add('active');
+      document.getElementById('progress-bar').style.width = '100%';
+
+      const severity = answers[1];
+      const duration = answers[2];
+      const tried = answers[3];
+      const goal = answers[4];
+      const budget = answers[5];
+
+      let primaryKit, altKits = [];
+      let reason = '';
+
+      // Logic for kit recommendation
+      if (severity === 'early' || severity === 'maintain') {
+        if (budget === 'budget') {
+          primaryKit = {
+            name: 'Defence Kit',
+            price: '$64.99',
+            link: 'products.html',
+            desc: '5% Minoxidil Foam + Specialist Scalp Shampoo',
+            features: ['60g Minoxidil Foam (2-month supply)', 'Specialist scalp shampoo', 'Quick-start routine card']
+          };
+          reason = 'Based on your early-stage thinning and budget, the Defence Kit gives you the core ingredients to halt loss without over-investing. You can always upgrade later.';
+          altKits = [
+            { name: 'Complete Kit', price: '$119.00', why: 'If you want the full Nioxin system + rosemary oil for faster results' }
+          ];
+        } else {
+          primaryKit = {
+            name: 'Complete Kit',
+            price: '$119.00',
+            link: 'product-nioxin-starter-kit.html',
+            desc: 'Nioxin + 5% Minoxidil + Rosemary Oil',
+            features: ['60g Minoxidil Foam', 'Nioxin Shampoo + Conditioner', 'Rosemary Scalp Oil', 'Progress tracker card']
+          };
+          reason = 'Your early-stage hair loss responds best to a dual-action approach. The Complete Kit combines the two most proven OTC treatments in one routine.';
+          altKits = [
+            { name: 'Defence Kit', price: '$64.99', why: 'If you prefer to start smaller and build up' },
+            { name: 'Intensive Kit', price: '$179.00', why: 'If you want maximum coverage with keratin fibres for instant confidence' }
+          ];
+        }
+      } else if (severity === 'noticeable') {
+        primaryKit = {
+          name: 'Complete Kit',
+          price: '$119.00',
+          link: 'product-nioxin-starter-kit.html',
+          desc: 'Nioxin + 5% Minoxidil + Rosemary Oil',
+          features: ['60g Minoxidil Foam', 'Nioxin Shampoo + Conditioner', 'Rosemary Scalp Oil', 'Progress tracker card']
+        };
+        reason = 'With noticeable thinning, you need a multi-pronged approach. The Complete Kit attacks loss from multiple angles — growth stimulation, scalp health, and follicle nourishment.';
+        if (budget === 'premium') {
+          altKits = [
+            { name: 'Intensive Kit', price: '$179.00', why: 'Double the minoxidil + keratin fibres for instant visual thickening while you wait for regrowth' }
+          ];
+        } else {
+          altKits = [
+            { name: 'Intensive Kit', price: '$179.00', why: 'For maximum coverage and instant confidence boost' },
+            { name: 'Defence Kit', price: '$64.99', why: 'If budget is tight — start here and add products over time' }
+          ];
+        }
+      } else {
+        // advanced
+        primaryKit = {
+          name: 'Intensive Kit',
+          price: '$179.00',
+          link: 'products.html',
+          desc: 'Double Minoxidil + Nioxin + Keratin Fibres + Rosemary Oil',
+          features: ['2x 60g Minoxidil Foam (4-month supply)', 'Nioxin System Kit', 'Keratin Hair Fibres', 'Rosemary Scalp Oil', 'Monthly progress tracker']
+        };
+        reason = 'With significant loss, maximum coverage is essential. The Intensive Kit gives you the highest dose of minoxidil plus instant-visual keratin fibres while regrowth develops.';
+        altKits = [
+          { name: 'Complete Kit', price: '$119.00', why: 'If $179 is too much upfront — still effective, just less coverage' }
+        ];
+      }
+
+      // Override for specific combinations
+      if (tried === 'minoxidil' && (goal === 'regrow' || goal === 'both')) {
+        if (budget !== 'budget') {
+          primaryKit = {
+            name: 'Intensive Kit',
+            price: '$179.00',
+            link: 'products.html',
+            desc: 'Double Minoxidil + Nioxin + Keratin Fibres + Rosemary Oil',
+            features: ['2x 60g Minoxidil Foam (4-month supply)', 'Nioxin System Kit', 'Keratin Hair Fibres', 'Rosemary Scalp Oil', 'Monthly progress tracker']
+          };
+          reason = 'Since you already know minoxidil works for you, the Intensive Kit maximises your routine with the full Nioxin system and keratin fibres for instant confidence.';
+        }
+      }
+
+      const html = `
+        <div class="result-kit">
+          <h3>${primaryKit.name}</h3>
+          <p style="color: var(--muted); margin-bottom: 1rem;">${primaryKit.desc}</p>
+          <div class="price">${primaryKit.price}</div>
+          <span class="bnpl" style="display: block; margin-bottom: 1rem;">From ${(parseInt(primaryKit.price.replace(/[^0-9]/g,''))/4).toFixed(2)} with Afterpay</span>
+          <ul style="margin: 1rem 0; padding-left: 1.25rem; color: var(--muted); font-size: 0.9rem;">
+            ${primaryKit.features.map(f => `<li style="margin-bottom: 0.4rem;">${f}</li>`).join('')}
+          </ul>
+          <a href="${primaryKit.link}" class="btn-primary" style="width: 100%; text-align: center; margin-top: 0.5rem;">Shop ${primaryKit.name}</a>
+        </div>
+        <div class="result-reason">
+          <strong>Why this kit?</strong><br>
+          ${reason}
+        </div>
+        ${altKits.length ? `
+        <div class="result-alts">
+          <h4>Also consider</h4>
+          ${altKits.map(a => `
+            <div class="alt-kit">
+              <strong>${a.name} — ${a.price}</strong>
+              <span>${a.why}</span>
+            </div>
+          `).join('')}
+        </div>
+        ` : ''}
+        <div style="margin-top: 1.5rem;">
+          <a href="products.html" class="btn-ghost">View all products</a>
+          <a href="guides.html" class="btn-ghost">Read the guide</a>
+        </div>
+      `;
+
+      document.getElementById('result-content').innerHTML = html;
+    }
+  </script>
+</body>
+</html>
